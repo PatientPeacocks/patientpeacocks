@@ -2,13 +2,18 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
+var models = require('./models')
 
 app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../react-client/dist'));
 
 app.get('/eventful', function (req, res) {
-  res.send('get successful at eventful');
+  models.users.get()
+  .then((result)=>{
+    console.log(result);
+    res.send(result);
+  })
 });
 
 app.get('/meetup', function(req, res) {
