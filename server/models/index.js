@@ -23,11 +23,13 @@ module.exports.users = {
 module.exports.events = {
   // get all events for a specific user
   getUsersEvents: (username) => {
-    return db.query(`SELECT e.name, e.category from events e INNER JOIN users_events ue ON e.id = ue.eventId INNER JOIN users u ON u.id = ue.userId where u.name = '${username}'`);
+    return db.query(`SELECT e.name, e.category, e.description, e.location from events e INNER JOIN users_events ue ON e.id = ue.eventId INNER JOIN users u ON u.id = ue.userId where u.name = '${username}'`);
   }
 }
 
-
+//unique
+//check if user exists
+//remove event
 
 
 
